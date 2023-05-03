@@ -8,7 +8,7 @@
  Version: 0.1
  */
 
-/* on selectionne toutes les fleurs */
+/* animation de rotation des fleurs  */
 .site-footer::after,
 .site-footer ul::after,
 .site-footer::before,
@@ -19,13 +19,13 @@
   animation: rotationFlowers 15s linear infinite;
 }
 
-/* on créer le keyframes de rotation pour les fleurs  */
 @keyframes rotationFlowers {
   100% {
     transform: rotate(360deg);
   }
 }
 
+/* animation des sections  */
 section,
 .banner img {
   animation: fadeIn 2s;
@@ -60,15 +60,22 @@ p {
   }
 }
 
-/* h2 {
-  opacity: 0;
-  transform: translateY(15px);
+@keyframes scrollTitle {
+  from {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-h2:hover {
-  opacity: 1;
-  transform: translateY(0px);
-  transition: all 0.2s ease;
-} */
+
+.title-animation {
+  animation: scrollTitle 1s ease 2s;
+}
+
+/* footer  */
 
 .site-footer {
   display: flex;
@@ -82,6 +89,12 @@ h2:hover {
   width: 35%;
 }
 
+.oscar-logo {
+  position: absolute;
+  right: 200px;
+  top: 200px;
+}
+
 .oscar-text {
   background-image: url("./assets/images/orange_oscar.png");
   font-size: 25px;
@@ -89,6 +102,32 @@ h2:hover {
   padding: 50px;
 }
 
-/* .logo-oscar {
-  background-image: url("/foce-child/assets/images/logo_oscar_1.png");
-} */
+/* hero header  */
+.background-video {
+  z-index: 0;
+}
+
+.logo-img {
+  size: 70%;
+  position: absolute;
+  right: 550px;
+  top: 150px;
+}
+
+/* flottement du titre du site  */
+
+.logo-img {
+  animation: floating 5s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

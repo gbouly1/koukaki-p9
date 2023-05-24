@@ -25,9 +25,8 @@
   }
 }
 
-/* animation des sections  */
-section,
-.banner img {
+/* animation des sections   */
+section {
   animation: fadeIn 2s;
 }
 
@@ -60,19 +59,30 @@ p {
   }
 }
 
-@keyframes scrollTitle {
+/* animation pour les apparitions des titres au scroll  */
+/* @keyframes scroll {
   from {
-    opacity: 0;
     transform: translateY(150px);
+    opacity: 0;
   }
   to {
-    opacity: 1;
     transform: translateY(0);
+    opacity: 1;
   }
+} */
+
+span {
+  display: block;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
 }
 
-.title-animation {
-  animation: scrollTitle 1s ease 2s;
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: opacity 1s, transform 1s;
 }
 
 /* footer  */
@@ -90,8 +100,9 @@ p {
 }
 
 .oscar-logo {
+  width: 10%;
   position: absolute;
-  right: 200px;
+  right: 300px;
   top: 200px;
 }
 
@@ -102,23 +113,12 @@ p {
   padding: 50px;
 }
 
-/* hero header  */
+/* hero header 
 .background-video {
   z-index: 0;
-}
-
-.logo-img {
-  size: 70%;
-  position: absolute;
-  right: 550px;
-  top: 150px;
-}
+} */
 
 /* flottement du titre du site  */
-
-.logo-img {
-  animation: floating 5s ease-in-out infinite;
-}
 
 @keyframes floating {
   0% {
@@ -129,5 +129,322 @@ p {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+.banner img {
+  z-index: 1;
+  position: absolute;
+  margin-top: unset;
+  width: unset;
+  animation: floating 5s ease-in-out infinite;
+}
+
+/* ---------------------------------------------------- */
+/* Caroussel avec Swiper JS */
+
+.swiper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+.swiper-pagination {
+  padding-top: 20px;
+}
+
+/* ------------------- */
+/* Menu burger  */
+
+.main-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.burger-menu {
+  /* height: 80px; */
+  background-color: #ffd5a2;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
+
+.newul {
+  list-style: none;
+  padding: 0;
+  z-index: 3;
+}
+
+.newul .burger-list li {
+  text-align: center;
+  animation: 1s print;
+  padding-top: 20px;
+}
+
+.newul .burger-list li a {
+  text-decoration: none;
+  font-size: 64px;
+  font-family: "Roboto Mono", monospace;
+}
+
+.open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff5e9;
+  z-index: 2;
+  animation: fade 0.7s;
+}
+
+@keyframes print {
+  from {
+    margin-top: -50px;
+    opacity: 0;
+  }
+  to {
+    margin-top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Icone Burger  */
+
+.burger-button {
+  width: 42px;
+  height: 24px;
+  cursor: pointer;
+  position: relative;
+  z-index: 100;
+  left: 500px;
+}
+
+.burger-button span {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  display: block;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.burger-button span::before,
+.burger-button span::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition: transform 0.5s ease-in-out;
+}
+
+.burger-button span::before {
+  transform: translateY(-10px);
+}
+
+.burger-button span::after {
+  transform: translateY(10px);
+}
+
+.burger-button.active span {
+  background-color: transparent;
+}
+
+.burger-button.active span::before {
+  transform: translateY(0) rotateZ(45deg);
+}
+
+.burger-button.active span::after {
+  transform: translateY(0) rotateZ(-45deg);
+}
+.site-title {
+  list-style-type: none;
+}
+
+.burger-list {
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+}
+
+.burger-list p {
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  padding-top: 150px;
+}
+
+.burger-list a {
+  font-size: 64px;
+}
+
+.burger-list a:hover {
+  text-shadow: 0px 0px 14px #ff5c00;
+  text-decoration: none;
+}
+
+.logomenu::before {
+  content: url("assets/images/image_logo.png");
+  display: flex;
+  justify-content: center;
+}
+
+/* Placement des images dans le menu burger  */
+
+.fleurblanchemenu {
+  content: url("assets/images/sunflower-burger.png");
+  position: absolute;
+  right: 350px;
+  top: 169px;
+  animation: rotationFlowers 15s linear infinite;
+}
+
+.bluecat {
+  content: url("assets/images/cat-burger.png");
+  position: absolute;
+  left: 550px;
+  top: 250px;
+  animation: floating 3s ease-in-out infinite;
+}
+
+.orchid {
+  content: url("assets/images/Orchid-burger.png");
+  position: absolute;
+  top: 200px;
+  left: 235px;
+}
+
+.randomflower {
+  content: url("assets/images/randomflower-burger.png");
+  position: absolute;
+  top: 400px;
+  right: 235px;
+}
+
+.flower {
+  content: url("assets/images/flower-burger.png");
+  position: absolute;
+  top: 500px;
+  left: 550px;
+  animation: rotationFlowers 15s linear infinite;
+}
+
+.blackcat {
+  content: url("assets/images/blackcat-burger.png");
+  position: absolute;
+  right: 350px;
+  top: 600px;
+  animation: floating 5s ease-in-out infinite;
+}
+
+.yellowcat {
+  content: url("assets/images/yellowcat-burger.png");
+  position: absolute;
+  top: 750px;
+  left: 400px;
+  animation: floating 7s ease-in-out infinite;
+}
+
+/* Animation des nuages  */
+
+.story #place {
+  display: flex;
+  background-image: url("./assets/images/studio_koukaki-image_place.png");
+  width: 100%;
+  min-height: 699px;
+  background-size: cover;
+}
+
+.big-cloud {
+  content: url("assets/images/big_cloud.png");
+  position: absolute;
+  filter: blur(7px);
+  height: 122px;
+  left: 700px;
+  top: 1300px;
+}
+
+.little-cloud {
+  content: url("assets/images/little_cloud.png");
+  position: absolute;
+  height: 55px;
+  top: 1450px;
+  left: 950px;
+  filter: blur(7px);
+}
+
+@keyframes cloud {
+  from {
+    transform: translateX(-300px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+.cloud-visible {
+  opacity: 1;
+  animation: cloud 3s ease-in-out;
+}
+
+/* media queries  */
+
+@media all and (max-width: 1400px) {
+  .fleurblanchemenu,
+  .bluecat,
+  .orchid,
+  .randomflower,
+  .flower,
+  .blackcat,
+  .yellowcat,
+  .site-title a {
+    visibility: hidden;
+  }
+  .burger-button {
+    position: absolute;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .background-video {
+    visibility: hidden;
   }
 }
